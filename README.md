@@ -34,6 +34,7 @@ A utility with the ability to generate a `.ics` calendar file which contains reo
 	 --event-time-start "7:30 pm" \
 	 --event-time-end "7:45 pm" \
 	 --event-attendee "email@email.com" \
+	 --event-attendee "another@email.com" \
 	 --event-name "Take Out Trash"
    ```
 
