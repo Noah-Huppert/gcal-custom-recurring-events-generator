@@ -82,10 +82,13 @@ def main():
 
     # Iterate through days
     calendar = Calendar()
+    num_events = 0
     for current_date in DateRangeIter(args.start_date, args.end_date):
         # If matches the criteria
-        if current_date.weekday() == WEEKDAY_STR_TO_INT[args.occurs_on_day] and current_date.day % 2 == 0 if args.occurs_odd_or_even == "even" else 1:
+        if current_date.weekday() == WEEKDAY_STR_TO_INT[args.occurs_on_day] and current_date.day % 2 == (0 if args.occurs_odd_or_even == "even" else 1):
             # Craft event
+            num_events += 1
+            
             event = Event()
             event.name = args.event_name
 
@@ -114,6 +117,8 @@ def main():
     # Write to file
     with open(args.out_ics, 'w') as ics_f:
         ics_f.writelines(calendar)
+
+    print(f"Wrote {num_events} event(s) to {args.out_ics}")
 
 if __name__ == "__main__":
     main()
